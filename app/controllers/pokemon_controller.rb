@@ -1,12 +1,12 @@
 class PokemonController < ApplicationController
-	def capture
-		@pokemon = Pokemon.find(params[:id])
-    	@pokemon.trainer = current_trainer
-    	@pokemon.save
-    	redirect_to root_path
-	end
+  def capture
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.trainer = current_trainer
+    @pokemon.save
+    redirect_to root_path
+  end
 
-	def damage
+  def damage
     pokemon = Pokemon.find(params[:id])
     pokemon.health -= 10
     pokemon.save
@@ -18,16 +18,16 @@ class PokemonController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(pokemon_params)
-	  @pokemon.health = 100
     @pokemon.level = 1
-	  @pokemon.trainer = current_trainer
+    @pokemon.health = 100
+    @pokemon.trainer_id = current_trainer.id
 
-	  if @pokemon.save
-	    redirect_to trainer_path(current_trainer)
-	  else
-	    redirect_to new_path
+    if @pokemon.save
+      redirect_to trainer_path(current_trainer.id)
+    else
+      redirect_to new_path
       flash[:error] = @pokemon.errors.full_messages.to_sentence
-	  end
+    end
   end
 
   def heal
@@ -39,6 +39,7 @@ class PokemonController < ApplicationController
 
   def new
     @pokemon = Pokemon.new
+
   end
 
   def pokemon_params
