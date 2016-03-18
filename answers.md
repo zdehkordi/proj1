@@ -9,7 +9,7 @@ Wrath
 # Question 4: What did you pass into the redirect_to? If it is a path, what did that path need? If it is not a path, why is it okay not to have a path here?
 A path that required the pokemon's trainer
 # Question 5: Explain how putting this line "flash[:error] = @pokemon.errors.full_messages.to_sentence" shows error messages on your form.
-It creates that displays an error message in it
+It creates a box that displays an error message in it
 # Give us feedback on the project and decal below!
 It is very hard to debug. Little mistakes can prevent a lot of progress. Learning from mistakes helped a lot though.
 # Extra credit: Link your Heroku deployed app
